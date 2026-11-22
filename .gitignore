@@ -1,2 +1,11 @@
 __pycache__/
 *.pyc
+*.key
+*.pem
+*.csr
+*.srl
+encrypt_key.txt
+pair.json
+client.toml
+services.json
+resolvers.txt

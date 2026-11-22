@@ -1,0 +1,21 @@
+[Unit]
+Description=DNS Bond node
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=dnsbond
+Group=dnsbond
+WorkingDirectory=/var/lib/dns-bond/node
+ExecStart=/usr/bin/python3 /opt/dns-bond/run_node.py /var/lib/dns-bond/node
+Environment=PATH=/usr/local/bin:/usr/bin:/bin
+Environment=PYTHONUNBUFFERED=1
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=yes
+UMask=0077
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
